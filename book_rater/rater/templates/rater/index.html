@@ -1,6 +1,6 @@
-{% if all_books %}
+{% if books %}
     <ul>
-    {% for book in all_books %}
+    {% for book in books %}
         <li><a href="{% url 'rater:detail' book.id %}">{{ book.title }}</a></li>
     {% endfor %}
     </ul>
