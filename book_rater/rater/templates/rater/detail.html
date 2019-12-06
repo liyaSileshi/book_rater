@@ -1,2 +1,7 @@
 <h1>{{ book.title }}</h1>
 <p>{{ book.description }}</p>
+
+{% for comment in book.comment_set.all %}
+  {% include 'rater/comment_detail.html' %}    
+{% endfor %}
+
