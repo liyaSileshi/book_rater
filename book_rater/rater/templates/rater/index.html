@@ -7,3 +7,26 @@
 {% else %}
     <p>No books are available.</p>
 {% endif %}
+
+{% for key, value in book_array.items %}
+    <img src='{{ value }}'>
+{% endfor %}
+<!-- <form method="POST">
+    <input class="input" type="text" placeholder="Book Name">
+    <button class="button is-info">
+        Search
+    </button>
+</form> -->
+<form method="GET">
+    {% csrf_token %}
+    <div class="field has-addons">
+        <div class="control is-expanded">
+            {{ form.title }}
+        </div>
+        <div class="control">
+            <button class="button is-info">
+                Add Book
+            </button>
+        </div>
+    </div>
+</form>
