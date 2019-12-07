@@ -5,3 +5,8 @@
   {% include 'rater/comment_detail.html' %}    
 {% endfor %}
 
+<form method='post'>
+    {% csrf_token %}
+    {{form.as_p}}
+<input type="submit" value="Submit" />
+</form>

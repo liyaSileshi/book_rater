@@ -16,7 +16,6 @@ class Book(models.Model):
         """ Creates a URL safe slug automatically when a new a page is created. """
         if not self.pk:
             self.slug = slugify(self.title, allow_unicode=True)
-
         # Call save on the superclass.
         return super(Book, self).save(*args, **kwargs)
 
