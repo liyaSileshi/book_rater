@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
 {% if books %}
     <ul>
     {% for book in books %}
@@ -7,10 +9,10 @@
 {% else %}
     <p>No books are available.</p>
 {% endif %}
-
-{% for key, value in book_array.items %}
+{% endblock %}
+<!-- {% for key, value in book_array.items %}
     <img src='{{ value }}'>
-{% endfor %}
+{% endfor %} -->
 <!-- <form method="POST">
     <input class="input" type="text" placeholder="Book Name">
     <button class="button is-info">

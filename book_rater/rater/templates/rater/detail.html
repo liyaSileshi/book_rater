@@ -1,3 +1,5 @@
+{% extends 'base.html'%}
+{% block content %}
 <h1>{{ book.title }}</h1>
 <p>{{ book.description }}</p>
 
@@ -10,3 +12,4 @@
     {{form.as_p}}
 <input type="submit" value="Submit" />
 </form>
+{% endblock %}
