@@ -2,15 +2,19 @@
 {% block content %}
 <h1>{{ book.title }}</h1>
 <p>{{ book.summary }}</p>
-<img src='{{book.image}}'>
+<img src='{{book.image}}' height='500' width=auto>
 
+<p>Comments</p>
 {% for comment in book.comment_set.all %}
   {% include 'rater/comment_detail.html' %}    
 {% endfor %}
 
 <form method='post'>
-    {% csrf_token %}
-    {{form.as_p}}
-<input type="submit" value="Submit" />
+  <div class="form-group">
+      {% csrf_token %}
+      {{form.as_p}}
+      <!-- <input type="submit" class="form-control" value="Submit" /> -->
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </div>  
 </form>
 {% endblock %}

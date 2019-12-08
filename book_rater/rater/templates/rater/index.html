@@ -3,7 +3,8 @@
 {% if books %}
     <ul>
     {% for book in books %}
-        <li><a href="{% url 'rater:detail' book.slug %}">{{ book.title }}</a></li>
+       
+        {% include "rater/partials/card.html" %}
     {% endfor %}
     </ul>
 {% else %}

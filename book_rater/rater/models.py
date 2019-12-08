@@ -1,5 +1,7 @@
 from django.db import models
+from django.conf import settings
 from django.utils.text import slugify
+from django.contrib.auth.models import User
 # Create your models here.
 class Book(models.Model):
     title = models.CharField(max_length = 200, default='book title', null=True)
@@ -37,6 +39,8 @@ class Comment(models.Model):
         (5, '5')
     )
     comment = models.TextField(default='book comment')
+    author = models.ForeignKey(User, on_delete=models.PROTECT,
+                               help_text="The user that posted this book.", null=True)
     rating = models.IntegerField(choices=RATING_RANGE, default=RATING_RANGE[0][0])
     book = models.ForeignKey(Book, on_delete = models.CASCADE)
     def __str__(self):
