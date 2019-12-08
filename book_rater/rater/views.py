@@ -68,6 +68,7 @@ class BookDetailView(DetailView):
     def post(self, request, slug):
         book = self.get_queryset().get(slug__iexact=slug)
         form = CommentForm(request.POST)
+        form.instance.author = self.request.user
         if form.is_valid():
         #   print(form.cleaned_data)
           comment = form.save(commit=False)
