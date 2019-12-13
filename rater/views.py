@@ -31,7 +31,7 @@ class BookListView(ListView):
         """ GET a list of Books. """
         books = self.get_queryset().all()
         return render(request, 'rater/index.html', {
-          'books': books
+          'books': books,
         })
 
     # def get(self, request):
