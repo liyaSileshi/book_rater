@@ -123,9 +123,9 @@ STATIC_URL = '/static/'
 
 
 #where to redirect during authentication
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
-DEFAULT_LOGOUT_URL = '/'
+LOGIN_REDIRECT_URL = "/rater"
+LOGOUT_REDIRECT_URL = "/rater"
+DEFAULT_LOGOUT_URL = '/rater'
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
