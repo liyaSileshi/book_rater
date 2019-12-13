@@ -13,6 +13,9 @@ class Book(models.Model):
     isbn = models.CharField('ISBN', max_length=13,default='0000', help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>')
     image = models.CharField(max_length = 400, default='book image url', null=True)
 
+    def __str__(self):
+        return self.title
+        
     def get_absolute_url(self):
         """ Returns a fully-qualified path for a page (/my-new-wiki-page). """
         path_components = {'slug': self.slug}
