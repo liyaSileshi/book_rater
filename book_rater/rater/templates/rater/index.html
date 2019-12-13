@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
+   <img src="{% static 'books.jpg' %}" alt="books" width='1000' height='500'>
 {% if books %}
     <ul>
     {% for book in books %}

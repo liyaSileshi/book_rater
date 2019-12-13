@@ -25,7 +25,7 @@ SECRET_KEY = '6^$x4*(namoepk247p-9vs8(b#mk%6&w=8c1&nh5&*6tl^=g1m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'bookrater-lt.herokuapp.com']
 
 
 # Application definition
@@ -120,7 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = [
+     os.path.join(BASE_DIR, "static"),
+ ]
+STATIC_ROOT = os.path.join(BASE_DIR, ‘static’)
 
 #where to redirect during authentication
 LOGIN_REDIRECT_URL = "/rater"
