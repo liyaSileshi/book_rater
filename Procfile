@@ -1,1 +1,1 @@
-web: gunicorn --chdir book_rater book_rater.wsgi --log-file -
+web: gunicorn book_rater.wsgi --log-file -
