@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>New Book Page</h2>
+    <form method="POST" class="PageForm">{% csrf_token %}
+        <div class = 'form-page'>
+            {{form.as_p}}
+        </div>
+        <button type="submit" class="btn btn-success ml-4">Save</button>
+    </form>
+{% endblock %}

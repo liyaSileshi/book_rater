@@ -6,10 +6,23 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic import CreateView
 from django.urls import reverse, reverse_lazy
-from rater.forms import CommentForm
+from rater.forms import CommentForm, BookForm
 import requests
 import json
-# Create your views here.
+
+
+class BookCreateView(CreateView):
+  def get(self, request, *args, **kwargs):
+      context = {'form': BookForm()}
+      return render(request, 'rater/book_new.html', context)
+
+  def post(self, request, *args, **kwargs):
+      form = BookForm(request.POST)
+      if form.is_valid():
+          page = form.save()
+          return HttpResponseRedirect(reverse_lazy('rater:detail', args=[page.slug]))
+      return render(request, 'rater/book_new.html', {'form': form})
+
 
 class BookListView(ListView):
     """ Renders a list of all Books. """
