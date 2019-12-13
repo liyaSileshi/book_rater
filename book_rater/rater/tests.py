@@ -52,53 +52,46 @@ class BookListViewTests(TestCase):
             ordered=False
         )
 
-# class PageDetailViewTests(TestCase):
-#     def test_one_page_detail(self):
-#         user = User.objects.create()
+class BookDetailViewTests(TestCase):
+    def test_one_book_detail(self):
+        #create a fake book
+        Book.objects.create(title="My Test Book", summary="test", author='lorem', isbn=0000, image='ipsum')
 
-#         #create a fake page
-#         Page.objects.create(title="My Test Page", content="test", author=user)
+        # Issue a GET request to the details page.
+        # When we make a request, we get a response back.
+        response = self.client.get('/rater/my-test-book/')
+        self.assertEqual(response.status_code, 200)
 
-#         # Issue a GET request to the details page.
-#         # When we make a request, we get a response back.
-#         response = self.client.get('/my-test-page/')
-#         self.assertEqual(response.status_code, 200)
-
-#         page = response.context['page']
-#         self.assertEqual(page.title, "My Test Page")
+        book = response.context['book']
+        self.assertEqual(book.title, "My Test Book")
     
-# class PageCreateViewTests(TestCase):
-#     def test_page_create(self):
-#         # check that the creation page form loads when visiting
-#         response = self.client.get('/new/')
-#         self.assertEqual(response.status_code, 200)
+class BookCreateViewTests(TestCase):
+    def test_book_create(self):
+        # check that the creation book form loads when visiting
+        response = self.client.get('/rater/new/')
+        self.assertEqual(response.status_code, 200)
 
-#         form = PageForm()
-#         self.assertTrue(form)
+        form = BookForm()
+        self.assertTrue(form)
 
-#         self.assertIn(b'Title of your page.', response.content)
-#         self.assertIn(b'Write the content of your page here.', response.content)
+        self.assertIn(b'book title', response.content)
+        self.assertIn(b'book description', response.content)
 
-#     def test_page_form_post(self):
-#         #get a user object
-#         user = User.objects.create()
+    def test_page_form_post(self):
+        #make a form dictionary
 
-#         #make a form dictionary
-#         form = {'title':"My Test Page",
-#                         'content':"testing", 'author': user.id}
+        form = {'title':"My Test Book",
+                        'summary':"testing", 'author': 'writer',
+                        'isbn':0000, 'image':'ipsum'}
 
-#         response = self.client.post('/new/', form = form)
-#         self.assertEqual(response.status_code, 302) #not working
+        response = self.client.post('/rater/new/', form = form)
+        self.assertEqual(response.status_code, 200)
 
-#         #create a page form with the form data and check if it's valid
-#         form_page = PageForm(data=form)
-#         form_page.save()
-#         self.assertTrue(form_page.is_valid())
+        #create a book form with the form data and check if it's valid
+        form_book = BookForm(data=form)
+        form_book.save()
+        self.assertTrue(form_book.is_valid())
 
-#         users = User.objects.all()
-#         self.assertEqual(len(users), 1)
-
-#         #check if the form is saved in the test db
-#         page = Page.objects.get(title = 'My Test Page')
-#         # print(page.author)
-#         # self.assertEqual(page.title, 'My Test Page')
+        #check if the form is saved in the test db
+        book = Book.objects.get(title = 'My Test Book')
+        self.assertEqual(book.title, 'My Test Book')
