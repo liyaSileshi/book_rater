@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <link rel="stylesheet" href="https://bootswatch.com/4/pulse/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       {% load static %}
       <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
     <title>bookRater</title>
@@ -14,6 +15,11 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="{% url 'rater:index' %}"><i class="fas fa-fw fa-book"></i> bookRater</a>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
       <form class="form-inline ml-auto">
         {% if user.is_authenticated %}
           <div class="text-white">Hello, <strong>{{user.username}}</strong>!</div>

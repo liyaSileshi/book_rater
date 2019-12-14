@@ -1,3 +1,18 @@
 body{
-    background-color: green;
+    background-color: #FFF5D0;
+
+}
+
+.hero{
+    margin-bottom: 6em;
+}
+
+.title{
+    margin-left: 6em;
+    font-size: 4em;
+    margin-bottom: 1em;
+}
+
+.checked{
+    color: orange;
 }
