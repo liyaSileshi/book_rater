@@ -91,7 +91,6 @@ class BookCreateViewTests(TestCase):
         form_book = BookForm(data=form)
         form_book.save()
         self.assertTrue(form_book.is_valid())
-
         #check if the form is saved in the test db
         book = Book.objects.get(title = 'My Test Book')
         self.assertEqual(book.title, 'My Test Book')

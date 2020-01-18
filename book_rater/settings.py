@@ -25,7 +25,7 @@ SECRET_KEY = '6^$x4*(namoepk247p-9vs8(b#mk%6&w=8c1&nh5&*6tl^=g1m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'bookrater-lt.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1' , 'bookrater-lt.herokuapp.com']
 
 
 # Application definition
